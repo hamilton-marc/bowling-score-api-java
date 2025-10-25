@@ -1,4 +1,4 @@
-package com.unionhills.bowlingscore;
+package com.unionhills.bowlingscore.integration;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -12,15 +12,27 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
+/**
+ * Tests the ApiHealthController
+ *
+ */
 @SpringBootTest
 @AutoConfigureMockMvc
-public class ApiControllerTest {
+public class ApiHealthControllerTest {
     @Autowired
     private MockMvc mvc;
 
+    /**
+     * Make sure the ApiHealthController returns the appropriate status message when
+     * the API is up and running.
+     *
+     * @throws Exception
+     */
     @Test
     public void shouldReturnPassingHealthStatus() throws Exception {
-        mvc.perform(MockMvcRequestBuilders.get("/api").accept(MediaType.APPLICATION_JSON))
+        var mockRequest = MockMvcRequestBuilders.get("/api").accept(MediaType.APPLICATION_JSON);
+
+        mvc.perform(mockRequest)
                 .andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.status", equalTo("pass")));
