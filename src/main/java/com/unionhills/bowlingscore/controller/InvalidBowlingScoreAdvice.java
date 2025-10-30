@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.util.Map;
 
+/**
+ * Encapsulates error handling and reporting for our REST API.
+ */
 @RestControllerAdvice
 public class InvalidBowlingScoreAdvice {
 

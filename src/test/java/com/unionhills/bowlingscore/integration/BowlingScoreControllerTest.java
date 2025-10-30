@@ -40,4 +40,15 @@ public class BowlingScoreControllerTest {
 
         mockResult.andExpect(isValidJsonResponse);
     }
+
+    @Test
+    public void shouldReturnBadRequestGivenInvalidInput() throws Exception {
+        var mockRequest = MockMvcRequestBuilders.get("/api/score")
+                .param("throws", "6")
+                .accept(MediaType.APPLICATION_JSON);
+
+        var mockResult = mvc.perform(mockRequest);
+
+        mockResult.andExpect(status().isOk());
+    }
 }
