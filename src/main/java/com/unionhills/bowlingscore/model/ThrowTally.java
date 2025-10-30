@@ -20,7 +20,7 @@ public class ThrowTally {
     // 10 frames * 2 throws + the potential for 1 extra in frame 10
     public static final int MAX_THROWS = MAX_FRAMES * 2 + 1;
 
-    private int[] throwsArray = new int[MAX_THROWS];
+    private final int[] throwsArray = new int[MAX_THROWS];
 
     /**
      * Constructor takes an array of throw values. The length of the array
