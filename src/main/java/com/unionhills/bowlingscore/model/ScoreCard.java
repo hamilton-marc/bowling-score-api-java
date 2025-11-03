@@ -4,8 +4,14 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.ArrayList;
-import java.util.List;
 
+/**
+ * These classes represent the concept of a Bowling Score Card.
+ * A ScoreCard consists of 10 frames. Each frame consists of at least 2 throws.
+ * A FrameScore represents both the pins that were knocked down and the
+ * score for that frame
+ *
+ */
 public class ScoreCard {
     private static final int DEFAULT_MAX_FRAMES = 10;
 

@@ -1,4 +1,4 @@
-package com.unionhills.bowlingscore.integration;
+package com.unionhills.bowlingscore.controller;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;

@@ -1,4 +1,4 @@
-package com.unionhills.bowlingscore.integration;
+package com.unionhills.bowlingscore.controller;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
