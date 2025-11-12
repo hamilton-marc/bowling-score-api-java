@@ -4,6 +4,7 @@ import com.unionhills.bowlingscore.shared.BowlingScoreException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Map;
@@ -28,11 +29,27 @@ public class BowlingScoreController {
      * @throws Exception
      */
     @GetMapping("api/score")
-    public ResponseEntity<?> scoreGame() throws Exception {
-        throw new BowlingScoreException("Invalid input. No bowling throws were provided. " +
-                "Use a \"throws\" query parameter with a comma delimited " +
-                "set of throw values indicating the number of pins " +
-                "knocked down for each throw.");
+    public ResponseEntity<?> scoreGame(
+            @RequestParam(required = true) String throwsParam
+    ) throws Exception {
+        validateThrows(throwsParam);
+
+        return ResponseEntity.ok("");
+    }
+
+    /**
+     * Validates the incoming "throws" parameter.
+     *
+     * @param throwsParam
+     * @throws BowlingScoreException if the parameter is null or blank
+     */
+    private void validateThrows(String throwsParam) throws BowlingScoreException {
+        if (throwsParam == null || throwsParam.isBlank()) {
+            throw new BowlingScoreException("Invalid input. No bowling throws were provided. " +
+                    "Use a \"throws\" query parameter with a comma delimited " +
+                    "set of throw values indicating the number of pins " +
+                    "knocked down for each throw.");
+        }
     }
 
     /**
